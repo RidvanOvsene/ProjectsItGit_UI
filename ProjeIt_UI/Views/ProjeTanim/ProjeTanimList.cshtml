@@ -1,0 +1,67 @@
+﻿@model List<ProjeIt_UI.Models.Dtos.ProjeTanimDto>
+@{
+    ViewData["Title"] = "ProjeTanim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Rol = ViewData["UserRole"] as SeesionModel;
+}
+<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    @if (Rol.Role.RolAdi == "Admin")
+    {
+        <a style="margin-left: -1em; margin-bottom: 1em; width: 5em;" href="~/ProjeTanim/ExcelDisaAktar" class="btn btn-primary">Excel</a>
+    }
+    @if (Rol.Role.RolAdi == "Admin")
+    {
+        <a style="margin-left: -1em; margin-bottom: 1em; width: 5em;" href="~/ProjeTanim/ProjeTanimCreate" class="btn btn-primary">Ekle</a>
+    }
+</div>
+<div class="row" id="table-responsive">
+    <div class="col-12">
+        <div class="card">
+            <div class="table-responsive" id="PrintDiv">
+                <table id="datatable_fixed_column" class="table mb-0">
+                    <thead>
+                        <tr>
+                            @if (Rol.Role.RolAdi == "Admin")
+                            {
+                                <th scope="col" class="t col-xl-1.5">İşlemler</th>
+                            }
+                            else
+                            {
+                                <th scope="col" class="t col-xl-1.5"></th>
+                            }
+                            <th scope="col" class=" col-xl-1.5">Proje Tanım Adı</th>
+                            <th scope="col" class=" col-xl-1.5">Sponsor Adı</th>
+                            <th scope="col" class=" col-xl-1.5">Hasta Uzmanlık Adı</th>
+                            <th scope="col" class=" col-xl-1.5">Kanser Tür Adı</th>
+                            <th scope="col" class=" col-xl-1.5">Materyal Tip Adı</th>
+                            <th scope="col" class=" col-xl-1.5">Tüp Cins Adı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="col-xl-1.5">
+                                    @if (Rol.Role.RolAdi == "Admin")
+                                    {
+                                        <a href="/ProjeTanim/ProjeTanimEdit/@item.ProjeTanimId" class=" btn btn-outline-success btn-sm "><i data-feather='edit'></i>Düzenle </a>
+                                    }
+                                    @if (Rol.Role.RolAdi == "Admin")
+                                    {
+                                        <a style="width: 68px" href="/ProjeTanim/ProjeTanimDelete/@item.ProjeTanimId" class="btn btn-sm btn-outline-danger "><i data-feather='trash-2'></i> Sil</a>
+                                    }
+                                </td>
+                                <td class="col-xl-1.5">@item.ProjeTanimAdi</td>
+                                <td class="col-xl-1.5">@item.SponsorAdi</td>
+                                <td class="col-xl-1.5">@item.HastaUzmanlikAdi</td>
+                                <td class="col-xl-1.5">@item.KanserTurAdi</td>
+                                <td class="col-xl-1.5">@item.MateryalTipAdi</td>
+                                <td class="col-xl-1.5">@item.TüpCinsAdi</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

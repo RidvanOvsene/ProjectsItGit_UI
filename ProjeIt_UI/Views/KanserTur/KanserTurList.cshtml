@@ -1,0 +1,64 @@
+﻿@model List<ProjeIt_UI.Models.KanserTur>
+@{
+    ViewData["Title"] = "KanserTurrList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Rol = ViewData["UserRole"] as SeesionModel;
+}
+
+<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    @if (Rol.Role.RolAdi == "Admin")
+    {
+        <a style="margin-left: -1em; margin-bottom: 1em; width: 5em;" href="~/Sponsor/SponsorCreate" class="btn btn-primary">Ekle</a>
+    }
+</div>
+<div class="row" id="table-responsive">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="table-responsive">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            @if (Rol.Role.RolAdi == "Admin")
+                            {
+                                <th scope="col" class="t col-xl-2">Düzenle</th>
+                                <th scope="col" class=" col-xl-2">Sil</th>
+                            }
+                            else
+                            {
+                                <th scope="col" class="t col-xl-2"></th>
+                                <th scope="col" class=" col-xl-2"></th>
+                            }
+                            <th scope="col" class=" col-xl-4">Sponsor Adı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="col-xl-2">
+                                    @if (Rol.Role.RolAdi == "Admin")
+                                    {
+                                        <a href="/KanserTur/KanserTurEdit/@item.KanserTurId" class=" btn btn-outline-success btn-sm "><i data-feather='edit'></i>Düzenle </a>
+                                    }
+                                </td>
+                                <td class="col-xl-2">
+                                    @if (Rol.Role.RolAdi == "Admin")
+                                    {
+                                        <a href="/KanserTur/KanserTurDelete/@item.KanserTurId" class="btn btn-sm btn-outline-danger "><i data-feather='trash-2'></i> Sil</a>
+                                    }
+                                </td>
+
+                                <td class="col-xl-2">@item.KanserTurAdi</td>
+
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

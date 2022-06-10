@@ -1,0 +1,58 @@
+﻿@model ProjeIt_UI.Models.Dtos.KullaniciDto
+@{
+    ViewData["Title"] = "KullaniciCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="basic-vertical-layouts">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Yeni Kayıt Oluştur</h4>
+                </div>
+                <div class="card-body">
+                    <form class="form form-vertical" enctype="multipart/form-data" asp-action="KullaniciCreate" asp-controller="Kullanici" method="post">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Adı Soyadı</h6></label><br />
+                                    <input type="text" autocomplete="off" id="first-name-vertical" class="form-control" name="AdiSoyadi" value="" />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Kullanıcı Adı</h6></label><br />
+                                    <input type="text" autocomplete="off" id="first-name-vertical" class="form-control" name="KullaniciAdi" value="" />
+                                </div>
+                            </div>
+                
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Rol Adı</h6></label><br />
+                                    <select name="RolId" style="height:31px;width:231px;font-size: 19px;" class="form-select form-select-lg" id="selectLarge">
+                                        @foreach (var RolItem in ViewBag.Rol)
+                                        {
+                                            <option value="@RolItem.RolId">@RolItem.RolAdi</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                                        <div class="col-4">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Şifre</h6></label><br />
+                                    <input type="text" autocomplete="off" id="first-name-vertical" class="form-control" name="Sifre" value="" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-12" style=" margin-top: 2%;">
+                                <button type="submit" class="btn btn-primary me-1">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

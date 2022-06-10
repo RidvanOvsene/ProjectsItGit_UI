@@ -1,0 +1,41 @@
+﻿@model ProjeIt_UI.Models.Sponsor
+@{
+    ViewData["Title"] = "SponsorEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.8.0/full-all/ckeditor.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.min.css" />*@
+
+@if (Model != null)
+{
+    <section id="basic-vertical-layouts">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Düzenle</h4>
+                    </div>
+                    <div class="card-body">
+                        <form class="form form-vertical" enctype="multipart/form-data" asp-action="SponsorEdit" asp-controller="Sponsor" method="post">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="first-name-vertical">Sponsor Adı</label>
+                                        <input type="text" autocomplete="off" style="display:none !important" id="first-name-vertical" class="form-control" name="SponsorId" value="@Model.SponsorId" />
+                                        <input type="text" autocomplete="off" id="first-name-vertical" class="form-control" name="SponsorAdi" value="@Model.SponsorAdi" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary me-1">Kaydet</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

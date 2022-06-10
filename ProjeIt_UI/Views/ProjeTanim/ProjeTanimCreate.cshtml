@@ -1,0 +1,90 @@
+﻿@model ProjeIt_UI.Models.Dtos.ProjeTanimDto
+@{
+    ViewData["Title"] = "ProjeTanimCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="basic-vertical-layouts">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Yeni Kayıt Oluştur</h4>
+                </div>
+                <div class="card-body">
+                    <form class="form form-vertical" enctype="multipart/form-data" asp-action="ProjeTanimCreate" asp-controller="ProjeTanim" method="post">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Proje Tanım Adı</h6></label><br />
+                                    <input type="text" autocomplete="off" id="first-name-vertical" class="form-control" name="ProjeTanimAdi" value="" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Sponsor Adı</h6></label><br />
+                                    <select name="SponsorId" style="height:31px;width:231px;font-size: 19px;" class="form-select form-select-lg" id="selectLarge">
+                                        @foreach (var SponsorItem in ViewBag.Sponsor)
+                                        {
+                                            <option value="@SponsorItem.SponsorId">@SponsorItem.SponsorAdi</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Hasta Uzmanlık Adı</h6></label><br />
+                                    <select name="HastaUzmanlikId" style="height:31px;width:231px;font-size: 19px;" class="form-select form-select-lg" id="selectLarge">
+                                        @foreach (var HastaUzmanlikItem in ViewBag.HastaUzmanlik)
+                                        {
+                                            <option value="@HastaUzmanlikItem.HastaUzmanlikId">@HastaUzmanlikItem.HastaUzmanlikAdi</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Kanser Tür Adı</h6></label><br />
+                                    <select name="KanserTurId" style="height:31px;width:231px;font-size: 19px;" class="form-select form-select-lg" id="selectLarge">
+                                        @foreach (var KanserTurItem in ViewBag.KanserTur)
+                                        {
+                                            <option value="@KanserTurItem.KanserTurId">@KanserTurItem.KanserTurAdi</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Materyal Tip Adı</h6></label><br />
+                                    <select name="MateryalTipId" style="height:31px;width:231px;font-size: 19px;" class="form-select form-select-lg" id="selectLarge">
+                                        @foreach (var MateryalTipItem in  ViewBag.MateryalTip)
+                                        {
+                                            <option value="@MateryalTipItem.MateryalTipId">@MateryalTipItem.MateryalTipAdi</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label class="form-label" for="first-name-vertical"><h6>Tüp Cins Adı</h6></label><br />
+                                    <select name="TüpCinsId" style="height:31px;width:231px;font-size: 19px;" class="form-select form-select-lg" id="selectLarge">
+                                        @foreach (var TüpCinsItem in ViewBag.TüpCins)
+                                        {
+                                            <option value="@TüpCinsItem.TüpCinsId">@TüpCinsItem.TüpCinsAdi</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="col-12" style=" margin-top: 2%;">
+                                <button type="submit" class="btn btn-primary me-1">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

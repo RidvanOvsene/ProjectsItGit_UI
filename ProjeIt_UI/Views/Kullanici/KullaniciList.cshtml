@@ -1,0 +1,66 @@
+﻿@model List<ProjeIt_UI.Models.Dtos.KullaniciDto>
+@{
+    ViewData["Title"] = "SponsorList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Rol = ViewData["UserRole"] as SeesionModel;
+}
+<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+     @if (Rol.Role.RolAdi == "Admin"){
+    <a style="margin-left: -1em; margin-bottom: 1em; width: 5em;" href="~/Kullanici/KullaniciCreate" class="btn btn-primary">Ekle</a>
+     }
+</div>
+<div class="row" id="table-responsive">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="table-responsive">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                              @if (Rol.Role.RolAdi == "Admin"){
+                                <th scope="col" class="t col-xl-2">Düzenle</th>
+                                <th scope="col" class=" col-xl-2">Sil</th>
+                            }
+
+                            else{
+                                <th scope="col" class="t col-xl-2"></th>
+                                <th scope="col" class=" col-xl-2"></th>
+                            }
+                            
+                            <th scope="col" class=" col-xl-2">Adı Soyadı</th>
+                            <th scope="col" class=" col-xl-2">Kullanıcı Adı</th>
+                            <th scope="col" class=" col-xl-2">Rol Adı</th>
+                            <th scope="col" class=" col-xl-2">Sifre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="col-xl-2">
+                                     @if (Rol.Role.RolAdi == "Admin"){
+                                    <a href="/Kullanici/KullaniciEdit/@item.KullaniciId" class=" btn btn-outline-success btn-sm "><i data-feather='edit'></i>Düzenle </a>
+                                     }
+                                </td>
+                                <td class="col-xl-2">
+                                     @if (Rol.Role.RolAdi == "Admin"){
+                                    <a href="/Kullanici/KullaniciDelete/@item.KullaniciId" class="btn btn-sm btn-outline-danger "><i data-feather='trash-2'></i> Sil</a>
+                                     }
+                                </td>
+
+                                <td class="col-xl-2">@item.AdiSoyadi</td>
+                                <td class="col-xl-2">@item.KullaniciAdi</td>
+                                <td class="col-xl-2">@item.RolAdi</td>
+                                <td class="col-xl-2">@item.Sifre</td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
